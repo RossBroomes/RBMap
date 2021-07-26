@@ -19,6 +19,8 @@
     #map {position:absolute; top: 0; bottom: 0; left: 0; right: 0;}
     </style>
 
+    <link rel="stylesheet" href="./app/libs/css/styles.css">
+    
     </head>
 <body>
 
@@ -28,11 +30,11 @@
     <p><a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a></p>
        
        <script>
-      var map = L.map('map').fitWorld();
+      //var map = L.map('map').fitWorld();
       //map.locate({setView: true, maxZoom: 16});
-      //var map = L.map('map').setView([0, 0], 1);
+      var map = L.map('map').setView([0, 0], 1);
         
-      L.tileLayer('https://api.maptiler.com/maps/basic/{z}/{x}/{y}.png?key=JD1HgqNKp28vYjHqWi4p',{
+      L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=JD1HgqNKp28vYjHqWi4p',{
         tileSize: 512,
         zoomOffset: -1,
         minZoom: 1,
