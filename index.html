@@ -2,32 +2,33 @@
 <html lang="en">
 <head>
 
-  <title>Document</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>RBMap</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
     
-    <link rel="stylesheet" href="../project1/app/libs/css/styles.css">
-
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
    crossorigin=""/>
 
    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-   crossorigin="">
-    </script>
+   crossorigin=""></script>
 
     <script src="./app/libs/js/leaflet-providers.js"></script>
-
     
+    <style>
+    #map {position:absolute; top: 0; bottom: 0; left: 0; right: 0;}
+    </style>
 
     </head>
 <body>
 
-     <div id="mapid" calss="map-fullscreen">
+     <div id="map">
+      <a href="https://www.maptiler.com" style="position:absolute;left:10px;bottom:10px;z-index:999;"><img src="https://api.maptiler.com/resources/logo.svg" alt="MapTiler logo"></a>
+    </div>
+    <p><a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a></p>
        
        <script>
-       var map = L.map('map').fitWorld();
+      var map = L.map('map').fitWorld();
       //map.locate({setView: true, maxZoom: 16});
       //var map = L.map('map').setView([0, 0], 1);
         
@@ -56,11 +57,9 @@
     map.on('locationerror', onLocationError);
 
 
-    </script></div>
-    
-   <script type="application/javascript" src="app/libs/js/jquery-2.2.3.min.js"></script>
-		<script type="application/javascript" src="app/libs/js/script.js"></script>
-
+    </script>
     
 </body>
+    <script type="application/javascript" src="./app/libs/js/jquery-2.2.3.min.js"></script>
+	  <script type="application/javascript" src="./app/libs/js/script.js"></script>
 </html>
