@@ -20,19 +20,20 @@
     </style>
 
     <link rel="stylesheet" href="./app/libs/css/styles.css">
-    
+
     </head>
 <body>
 
      <div id="map">
-      <a href="https://www.maptiler.com" style="position:absolute;left:10px;bottom:10px;z-index:999;"><img src="https://api.maptiler.com/resources/logo.svg" alt="MapTiler logo"></a>
+      
     </div>
-    <p><a href="https://www.maptiler.com/copyright/" target="_blank">© MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">© OpenStreetMap contributors</a></p>
+    
        
        <script>
+      var mymap = L.map('mapid').setView([51.505, -0.09], 13)
       //var map = L.map('map').fitWorld();
       //map.locate({setView: true, maxZoom: 16});
-      var map = L.map('map').setView([0, 0], 1);
+      
         
       L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=JD1HgqNKp28vYjHqWi4p',{
         tileSize: 512,
@@ -42,21 +43,21 @@
         crossOrigin: true
       }).addTo(map);
 
-      function onLocationFound(e) {
+    function onLocationFound(e) {
       var radius = e.accuracy / 2;
 
-    L.marker(e.latlng).addTo(map)
+      L.marker(e.latlng).addTo(map)
         .bindPopup("You are within " + radius + " meters from this point").openPopup();
 
-    L.circle(e.latlng, radius).addTo(map);
+      L.circle(e.latlng, radius).addTo(map);
 }
-    map.on('locationfound', onLocationFound);
+      map.on('locationfound', onLocationFound);
 
     function onLocationError(e) {
-    alert(e.message);
+      alert(e.message);
 }
 
-    map.on('locationerror', onLocationError);
+      map.on('locationerror', onLocationError);
 
 
     </script>
