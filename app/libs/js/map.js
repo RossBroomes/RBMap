@@ -1,7 +1,7 @@
  
-      var map = L.map('map').setView([51.505, -0.09], 13);
+      //var map = L.map('map').setView([51.505, -0.09], 13);
       //var map = L.map('map').fitWorld(); 
-      //map.locate({setView: true, maxZoom: 16});
+      map.locate({setView: true, maxZoom: 16});
       
         
       L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=JD1HgqNKp28vYjHqWi4p',{
