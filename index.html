@@ -16,6 +16,7 @@
    crossorigin=""></script>
 
     <script src="./app/libs/js/leaflet-providers.js"></script>
+    <script src="./app/libs/js/leaflet.ajax.js"></script>
     
     <link rel="stylesheet" href="./app/libs/css/styles.css">
 
@@ -37,20 +38,25 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li>
+        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            Quick country
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="countries">
+            <li><a class="dropdown-item" href="#" data-iso="UK">UK</a></li>
+            <li><a class="dropdown-item" href="#" data-iso="IE">Ireland</a></li>
+            <li><a class="dropdown-item" href="#" data-iso="FR">France</a></li>
+            <li><a class="dropdown-item" href="#" data-iso="DE">Germany</a></li>
+            <li><a class="dropdown-item" href="#" data-iso="ES">Spain</a></li>
+            <li><a class="dropdown-item" href="#" data-iso="PT">Portugal</a></li>
+            <li><a class="dropdown-item" href="#" data-iso="BE">Belgium</a></li>
+            <li><a class="dropdown-item" href="#" data-iso="LU">Luxembourg</a></li>
+            <li><a class="dropdown-item" href="#" data-iso="NL">Netherlands</a></li>
+            <li><a class="dropdown-item" href="#" data-iso="US">USA</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-        </li>
+
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
