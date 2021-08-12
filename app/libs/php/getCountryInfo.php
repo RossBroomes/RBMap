@@ -33,7 +33,7 @@
 	 * Get the capital info
 	 */
 	$capital = $output['data']['capital'];
-	//$url='https://restcountries.eu/rest/v2/capital/' . urlencode($capital);
+	
 	$url = 'https://api.opencagedata.com/geocode/v1/json?q=' . urlencode($capital) . '&key=4d2bcc7bf5bc4d5297ca437a245994b7';
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
