@@ -1,9 +1,34 @@
-body {
-    padding: 0;
-    margin: 0;
+#map {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
 }
-html, body, #map {
-    height: 100%;
-    width: 100vw;
+
+.dropDown {
+  position: fixed;
+  top: 50px;
+z-index: 2;
+left: 50em;
 }
-#mapid { height: 180px; }
+
+#countryInfoButton {
+  position: absolute;
+  z-index: 2;
+  top: 200px;
+}
+
+#countryStatsButton {
+  position: absolute;
+  z-index: 2;
+  top: 250px;
+}
+
+#countryWeatherButton {
+  position: absolute;
+  z-index: 2;
+  top: 300px;
+}
+
