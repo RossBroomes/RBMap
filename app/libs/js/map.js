@@ -1,34 +1,35 @@
-var map = L.map('map').setView([51.505, -0.09], 13);
-//var map = L.map('map').fitWorld(); 
-//map.locate({setView: true, maxZoom: 16});
 
-var marker = L.marker([51.5, -0.09]).addTo(map);
-
-var geojsonLayer = new L.GeoJSON.AJAX("countryBorders.geo.json");
-geojsonLayer.addTo(map);
-geojsonLayer.bringToBack();
-
+let map = L.map("map").fitWorld();
+map.locate({ setView: true, maxZoom: 12});
 
 L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=JD1HgqNKp28vYjHqWi4p', {
-    tileSize: 512,
-    zoomOffset: -1,
-    minZoom: 1,
+   
     attribution: "a href=\"https://www.maptiler.com/copyright/\" target=\"_blank\"\u003e\u0026copy; MapTiler\u003c/a\u003e \u003ca href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\"\u003e\u0026copy; OpenStreetMap contributors\u003c/a\u003e",
-    crossOrigin: true
+    
 }).addTo(map);
 
-function onLocationFound(e) {
-    var radius = e.accuracy / 2;
 
-    L.marker(e.latlng).addTo(map)
-        .bindPopup("You are within " + radius + " meters from this point").openPopup();
+L.control.scale().addTo(map);
 
-    L.circle(e.latlng, radius).addTo(map);
-}
-map.on('locationfound', onLocationFound);
+//var geojsonLayer = new L.GeoJSON.AJAX("countryBorders.geo.json");
+// Make a call to the jason file but using the country code, whihch is in country boardersgeojson file, then add to map.
 
-function onLocationError(e) {
-    alert(e.message);
-}
+//geojsonLayer.addTo(map);
+//geojsonLayer.bringToBack();
 
-map.on('locationerror', onLocationError);
+//will need popup on polygon
+//marker.bindPopup("insert information pulled from php call on contry info") https://www.youtube.com/watch?v=OYjFR_CGV8o&ab_channel=MapTiler MARKER only
+//geojsonlayer.bindPopup
+
+// geo location
+// if('geolocation' in navigator) {
+//   console.log('geolocation available');
+//   navigator.geolocation.getCurrentPosition(position => {
+//       const lat = position.coords.latitude;
+//       const lon = position.coords.longitude;
+//       document.getElementById('latitude');
+//       document.getElementById('longitude');
+//      console.log(position);
+// });
+// } else {
+//   console.log('geolocation not available')
