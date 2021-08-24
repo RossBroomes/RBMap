@@ -10,25 +10,39 @@
 .dropDown {
   position: fixed;
   top: 50px;
-z-index: 2;
-left: 50em;
+  z-index: 2;
+  left: 50%;
+  font: 3em sans-serif;
 }
-
+/* Modal Buttons */
 #countryInfoButton {
   position: absolute;
   z-index: 2;
   top: 200px;
-}
+  background-color: transparent;
+  border: 0em;
+  }
 
 #countryStatsButton {
   position: absolute;
-  z-index: 2;
-  top: 250px;
+  z-index: 3;
+  top: 300px;
+  background-color: transparent;
+  border: 0em;
 }
 
 #countryWeatherButton {
   position: absolute;
-  z-index: 2;
-  top: 300px;
+  z-index: 4;
+  top: 400px;
+  background-color: transparent;
+  border: 0em;
 }
 
+#countryWikiButton {
+  position: absolute;
+  z-index: 4;
+  top: 500px;
+  background-color: transparent;
+  border: 0em;
+}
