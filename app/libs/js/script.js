@@ -1,4 +1,4 @@
-$('#countries a').click(function(e){
+$('#selCountry').click(function(e){
     e.preventDefault();
     let country = $(this).data('iso');
 

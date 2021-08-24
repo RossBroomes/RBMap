@@ -11,6 +11,7 @@ L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=JD1HgqNKp
 
 L.control.scale().addTo(map);
 
+
 //var geojsonLayer = new L.GeoJSON.AJAX("countryBorders.geo.json");
 // Make a call to the jason file but using the country code, whihch is in country boardersgeojson file, then add to map.
 

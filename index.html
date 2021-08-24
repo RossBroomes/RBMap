@@ -124,7 +124,7 @@
       data-bs-toggle="modal"
       data-bs-target="#countryInfoModal"
       id="countryInfoButton"
-    ><img src="../project1/images/info.png" alt="Icon"/>
+    ><img src="../project1/images/info.png" alt="Information"/>
     </button>
     
      <!-- Country Info Modal -->
@@ -204,12 +204,19 @@
       data-bs-toggle="modal"
       data-bs-target="#countryStatsModal"
       id="countryStatsButton"
-    >
-    <img src="../project1/images/stats.png" alt="Icon"/>
+    ><img src="../project1/images/stats.png" alt="Statistics"/>
     </button>
     
-    <!-- Country Info Modal -->
-    <div class="modal-dialog modal-dialog-centered">
+    <!-- Country Stats Modal -->
+    <div
+      class="modal fade"
+      id="countryStatsModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+    
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Country Statistics</h5>
@@ -244,10 +251,17 @@
       data-bs-toggle="modal"
       data-bs-target="#countryWeatherModal"
       id="countryWeatherButton"
-    ><img src="../project1/images/cloudy.png" alt="Icon"/>
+    ><img src="../project1/images/cloudy.png" alt="Weather"/>
     </button>
     
     <!-- Country Weather Modal -->
+    <div
+      class="modal fade"
+      id="countryWeatherModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
@@ -275,13 +289,59 @@
         </div>
       </div>
     </div>
-  
+
+      <!-- Country Wiki Button -->
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#countryWikiModal"
+      id="countryWikiButton"
+    ><img src="../project1/images/wikipedia-puzzle.png" alt="Wikipedia"/>
+    </button>
+    
+    <!-- Country Wiki Modal -->
+    <div
+      class="modal fade"
+      id="countryWikiModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+    
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Wikipedia</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close">
+            </button>
+          </div>
+          <div class="modal-body">
+            
+
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   <div id="map" class="z-depth-1-half map-container"></div>
     
       
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
-    
+    <script type="application/javascript" src="./app/libs/js/jquery-2.2.3.min.js"></script>
     <script type="application/javascript" src="./app/libs/js/contentData.js"></script>
 	  <script type="application/javascript" src="./app/libs/js/script.js"></script>
     <script type="application/javascript" src="./app/libs/js/map.js"></script> 
