@@ -11,9 +11,12 @@
   position: fixed;
   top: 50px;
   z-index: 2;
-  left: 50%;
-  font: 3em sans-serif;
+  left: 45%;
+  border: 0em;
+  font: 2em sans-serif;
 }
+
+
 /* Modal Buttons */
 #countryInfoButton {
   position: absolute;

@@ -1,11 +1,10 @@
 
 let map = L.map("map").fitWorld();
-map.locate({ setView: true, maxZoom: 12});
+map.locate({ setView: true, maxZoom: 16});
 
-L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=JD1HgqNKp28vYjHqWi4p', {
-   
-    attribution: "a href=\"https://www.maptiler.com/copyright/\" target=\"_blank\"\u003e\u0026copy; MapTiler\u003c/a\u003e \u003ca href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\"\u003e\u0026copy; OpenStreetMap contributors\u003c/a\u003e",
-    
+L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+	maxZoom: 17,
+	attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
 }).addTo(map);
 
 

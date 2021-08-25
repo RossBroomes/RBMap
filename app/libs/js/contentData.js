@@ -40,7 +40,7 @@ async function getExchangeRates(selectedCountry) {
 
 async function getCountryData(selectedCountry) {
   return $.ajax({
-    url: "libs/php/getCountryInfo.php",
+    url: "app/libs/php/getCountryInfo.php",
     type: "POST",
     dataType: "json",
     data: {
@@ -51,42 +51,24 @@ async function getCountryData(selectedCountry) {
 
 async function getCountryPolygonFromBackend(iso3) {
   return $.ajax({
-    url: "libs/php/getCountryPolygon.php",
+    url: "app/libs/php/getCountryPolygon.php",
     type: "POST",
     dataType: "json",
     data: {
-      iso3,
+      iso3: iso3,
     },
   });
 }
 
 let plottedGeoJson;
-async function getCountryDataAndDisplay() {
+async function getCountryDataAndDisplay(isoAlpha3) {
   if (plottedGeoJson) {
     plottedGeoJson.removeFrom(map);
   }
-
-  // const selectedCountry = document.querySelector("#selCountry").innerHTML;
-  const selectedCountry = $("#selCountry").val(); // "US"
-  const response = await getCountryData(selectedCountry);
-
-  const countryInfo = response.data[0];
-
-  displayCountryData(countryInfo);
-
-  const { isoAlpha3 } = countryInfo;
 
   const { data: countryPolygon } = await getCountryPolygonFromBackend(
     isoAlpha3
   );
 
   plottedGeoJson = L.geoJSON(countryPolygon).addTo(map);
-
-  map.fitBounds([
-    [countryInfo.north, countryInfo.west],
-    [countryInfo.south, countryInfo.east],
-  ]);
 }
-
-$("#selCountry").change(getCountryDataAndDisplay);
-$("#selCountry").change(plottedGeoJson);
