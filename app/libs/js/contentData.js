@@ -10,8 +10,6 @@ function displayCountryData(countryData) {
     currencyCode,
   } = countryData;
 
-  console.log(countryData);
-
   $("#txtCountryName").html(countryName);
   $("#txtContinentName").html(continentName);
   $("#txtCurrencyCode").html(currencyCode);

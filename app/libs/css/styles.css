@@ -49,3 +49,9 @@
   background-color: transparent;
   border: 0em;
 }
+
+/* Modal Styles */
+
+.modal-content {
+  background-color: blue;
+}

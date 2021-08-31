@@ -41,29 +41,21 @@ $('#selCountry').change(function() {
 						$('#speed').text(response.wind.speed);
 						
 						$('#country').text(response.sys.country);
-						$('#sunset').text(response.sys.sunset)
-						var date = new Date("#sunset" * 1000)
+						
+						//converting the time format
+						$('#sunset').text(date = new Date(response.sys.sunset * 1000));
 						hours = date.getHours();
 						minutes = "0" + date.getMinutes();
 						seconds = "0" + date.getSeconds();
 						formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-						console.log(formattedTime);
-						;
 						
-						$('#sunrise').text(response.sys.sunrise);
-
 						
-
-						// let main = response.main.temp;
-						// $('#temp').text(main);
+						$('#sunrise').text(date = new Date(response.sys.sunrise * 1000));
+						hours = date.getHours();
+						minutes = "0" + date.getMinutes();
+						seconds = "0" + date.getSeconds();
+						formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
 						
-						// let main = response.wind.deg;
-						// $('#deg').text(wind)
-						// $('#gust').text(wind)
-						// $('#speed').text(wind)
-
-						// let sys = response.sys.country;
-						// $('#country').text(sys);
 
 					}, function(error){
 						
@@ -104,3 +96,18 @@ $('#selCountry').change(function() {
 						// var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
 
 						// console.log(formattedTime);
+
+
+
+
+
+						// function format_time(s) {
+  						// const dtFormat = new Intl.DateTimeFormat('en-GB', {
+    					// timeStyle: 'medium',
+    					// timeZone: 'UTC'
+  						// });
+  
+  						// return dtFormat.format(new Date(s * 1e3));
+						// }
+
+						// console.log( format_time(1630414128) );  // "03:25:45"
