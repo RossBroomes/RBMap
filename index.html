@@ -221,7 +221,7 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Country Statistics</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Country Excahnge Rates</h5>
             <button
               type="button"
               class="btn-close"
@@ -231,6 +231,7 @@
           </div>
           <div class="modal-body">
             
+            <div id="txtExchangeRate"></div>
 
           </div>
           <div class="modal-footer">
@@ -267,7 +268,8 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Weather</h5>
+            <h5 id="country"></h5>
+            <h5 class="modal-title" id="exampleModalLabel"> Weather</h5>
             <button
               type="button"
               class="btn-close"
@@ -275,9 +277,76 @@
               aria-label="Close">
             </button>
           </div>
-          <div class="modal-body" id="weatherDescription">
+
+          <div class="modal-body">
             
-            <div id="rainfall"></div>
+            <table>
+
+              <tr>
+                <td align="right">Temperature:</td>
+                <td id="temp"></td>
+              </tr>
+
+              <tr>
+                <td align="right">Feels Like:</td>
+                <td id="feelsLike"></td>
+              </tr>
+
+              <tr>
+                <td align="right">W/x:</td>
+                <td id="weatherDescription"></td>
+              </tr>
+
+              <tr>
+                <td align="right">Temp minimum:</td>
+                <td id="tempMin"></td>
+              </tr>
+
+              <tr>
+                <td align="right">Temp Maximum:</td>
+                <td id="tempMax"></td>
+              </tr>
+
+              <tr>
+                <td align="right">Wind Degrees:</td>
+                <td id="deg"></td>
+              </tr>
+
+              <tr>
+                <td align="right">Speed:</td>
+                <td id="speed"></td>
+              </tr>
+
+              <tr>
+                <td align="right">Gust:</td>
+                <td id="gust"></td>
+
+              <tr>
+                <td align="right">Sunrise:</td>
+                <td id="sunrise"></td>
+              </tr>
+
+              <tr>
+                <td align="right">Sunset:</td>
+                <td id="sunset"></td>
+              </tr>
+
+
+            </table>
+
+            <!-- <div id="weatherDescription"></div>
+            <div id="temp"></div>
+            <div id="feelsLike"></div>
+            <div id="pressure"></div>
+            <div id="tempMax"></div>
+            <div id="tempMin"></div>
+            <div id="deg"></div>
+            <div id="gust"></div>
+            <div id="speed"></div>
+
+            <div id="country"></div>
+            <div id="sunrise"></div>
+            <div id="sunset"></div> -->
 
           </div>
           <div class="modal-footer">

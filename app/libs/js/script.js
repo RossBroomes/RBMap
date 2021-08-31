@@ -1,16 +1,3 @@
-// $('#selCountry').click(function(e){
-//     e.preventDefault();
-//     let country = $(this).data('iso');
-
-//     $.getJSON('./app/libs/php/getCountryInfo.php', 'country=' + country, function(d) {
-//         let capital = d['data']['capital'];
-//         var marker = L.marker(capital.geometry).addTo(map);
-//         map.panTo(capital.geometry);
-//         console.log(capital);
-//     });
-
-
-// });
 
 $('#selCountry').change(function() {
 		$.ajax({
@@ -39,9 +26,51 @@ $('#selCountry').change(function() {
 					
 					// Populate weather modal
 
-					$.getJSON('https://api.openweathermap.org/data/2.5/weather?lat=' + capital['geometry']['lat'] + '&lon=' + capital['geometry']['lng'] + '&appid=0a97b286ef39e6c7365556f44496b631', function(response){
-						let weather = response.weather[0].description;
-						$('#weatherDescription').text(weather);
+					$.getJSON('https://api.openweathermap.org/data/2.5/weather?lat=' + capital['geometry']['lat'] + '&lon=' + capital['geometry']['lng'] + '&units=metric' + '&appid=0a97b286ef39e6c7365556f44496b631', 
+					function(response){
+
+						$('#weatherDescription').text(response.weather[0].description);
+						$('#temp').text(response.main.temp);
+						$('#feelsLike').text(response.main.feels_like);
+						$('#pressure').text(response.main.pressure);
+						$('#tempMax').text(response.main.temp_max);
+						$('#tempMin').text(response.main.temp_min);
+
+						$('#deg').text(response.wind.deg);
+						$('#gust').text(response.wind.gust);
+						$('#speed').text(response.wind.speed);
+						
+						$('#country').text(response.sys.country);
+						$('#sunset').text(response.sys.sunset);
+						$('#sunrise').text(response.sys.sunrise);
+
+						let unix_timestamp = ['sunset']
+						// Create a new JavaScript Date object based on the timestamp
+						// multiplied by 1000 so that the argument is in milliseconds, not seconds.
+						var date = new Date(unix_timestamp * 1000);
+						// Hours part from the timestamp
+						var hours = date.getHours();
+						// Minutes part from the timestamp
+						var minutes = "0" + date.getMinutes();
+						// Seconds part from the timestamp
+						var seconds = "0" + date.getSeconds();
+
+						// Will display time in 10:30:23 format
+						var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+
+						console.log(formattedTime);
+
+						// let main = response.main.temp;
+						// $('#temp').text(main);
+						
+						// let main = response.wind.deg;
+						// $('#deg').text(wind)
+						// $('#gust').text(wind)
+						// $('#speed').text(wind)
+
+						// let sys = response.sys.country;
+						// $('#country').text(sys);
+
 					}, function(error){
 						
 					});
@@ -49,7 +78,6 @@ $('#selCountry').change(function() {
 					// populate Wiki
 
 					$.getJSON('http://api.geonames.org/wikipediaSearchJSON?formatted=true&q=' + capital['name'] + '&maxRows=10&username=rbaw', function(response){
-						console.log(response);
 						$('#title').text(response.geonames[0].title);
 						$('#summary').text(response.geonames[0].summary);
 						$('#url').text(response.geonames[0].wikipediaUrl);

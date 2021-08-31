@@ -22,23 +22,23 @@ function displayCountryData(countryData) {
   $("#txtArea").html(areaInSqKm);
 }
 
-// function displayExchangeRates(exchange) {
-//   const { rates } = exchange;
+function displayExchangeRates(exchange) {
+  const { rates } = exchange;
 
-//   $("#txtExchangeRate").html(rates);
-// }
-// // returns a promise-like object which needs to be await-ed to get the data
+  $("#txtExchangeRate").html(rates);
+}
+// returns a promise-like object which needs to be await-ed to get the data
 
-// async function getExchangeRates(selectedCountry) {
-//   return $.ajax({
-//     url: "libs/php/getExchangeRates.php",
-//     type: "POST",
-//     dataType: "json",
-//     data: {
-//       country: selectedCountry,
-//     },
-//   });
-// }
+async function getExchangeRates(selectedCountry) {
+  return $.ajax({
+    url: "app/libs/php/getExchangeRates.php",
+    type: "POST",
+    dataType: "json",
+    data: {
+      country: selectedCountry,
+    },
+  });
+}
 
 async function getCountryData(selectedCountry) {
   return $.ajax({
