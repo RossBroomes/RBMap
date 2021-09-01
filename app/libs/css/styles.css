@@ -11,9 +11,9 @@
   position: fixed;
   top: 50px;
   z-index: 2;
-  left: 45%;
+  left: 40%;
   border: 0em;
-  font: 2em sans-serif;
+  font: 1.5em sans-serif;
 }
 
 
@@ -52,6 +52,9 @@
 
 /* Modal Styles */
 
-.modal-content {
-  background-color: blue;
+.modal-body {
+  background-color: rgb(0, 0, 0);
+  font-size: 150%;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: white
 }
