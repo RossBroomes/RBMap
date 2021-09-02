@@ -5,7 +5,7 @@
 
 	$executionStartTime = microtime(true);
 
-	$url='https://openexchangerates.org/api/latest.json?app_id=ee7c590fa710406b9327bb70d67037dc';
+	$url='https://openexchangerates.org/api/latest.json?app_id=ee7c590fa710406b9327bb70d67037dc&symbols='. urlencode($currencyCode)
 
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -37,7 +37,7 @@
 
     $executionStartTime = microtime(true);
 
-    $countryData = json_decode(file_get_contents("countryBorders.geo.json"), true);
+    $countryData = json_decode(file_get_contents("../../../countryBorders.geo.json"), true);
 
     $country = [];
 

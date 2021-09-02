@@ -197,15 +197,15 @@
       type="button"
       class="btn btn-primary"
       data-bs-toggle="modal"
-      data-bs-target="#countryStatsModal"
-      id="countryStatsButton"
-    ><img src="../project1/images/stats.png" alt="Stats"/>
+      data-bs-target="#countryExchangeModal"
+      id="countryExchangeButton"
+    ><img src="../project1/images/stats.png" alt="Excahnge"/>
     </button>
     
     <!-- Country Stats Modal -->
     <div
       class="modal fade"
-      id="countryStatsModal"
+      id="countryExchangeModal"
       tabindex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true">
@@ -213,7 +213,7 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Country Excahnge Rates</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Country Excahnge Rates $</h5>
             <button
               type="button"
               class="btn-close"
@@ -223,7 +223,32 @@
           </div>
           <div class="modal-body">
             
-            <div id="txtExchangeRate"></div>
+            <table>
+
+              <tr>
+                <td align="right">Base Index:</td>
+                <td id="txtBase"></td>
+              </tr>
+
+              <tr>
+                <td align="right">Currency:</td>
+                <td id="txtCurrencyCode"></td>
+              </tr>
+
+              <tr>
+                <td align="right">Rate:</td>
+                <td id="txtExchangeRate"></td>
+              </tr>
+
+              <tr>
+                <td align="right">Time:</td>
+                <td id="timeStamp"></td>
+              </tr>
+
+              
+
+            </table>
+            
 
           </div>
           

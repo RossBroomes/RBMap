@@ -26,9 +26,9 @@
   border: 0em;
   }
 
-#countryStatsButton {
+#countryExchangeButton {
   position: absolute;
-  z-index: 3;
+  z-index: 2;
   top: 300px;
   background-color: transparent;
   border: 0em;
@@ -36,7 +36,7 @@
 
 #countryWeatherButton {
   position: absolute;
-  z-index: 4;
+  z-index: 2;
   top: 400px;
   background-color: transparent;
   border: 0em;
@@ -44,7 +44,7 @@
 
 #countryWikiButton {
   position: absolute;
-  z-index: 4;
+  z-index: 2;
   top: 500px;
   background-color: transparent;
   border: 0em;
@@ -54,7 +54,16 @@
 
 .modal-body {
   background-color: rgb(0, 0, 0);
-  font-size: 150%;
+  font-size: 100%;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  color: white
+  color: white;
+    
+}
+
+.modal-header {
+  background-color: gray;
+}
+
+.modal-dialog {
+  max-width: 600px;
 }
