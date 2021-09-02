@@ -23,6 +23,23 @@ $('#selCountry').change(function() {
 					countryData['capital'] = capital['name'];
 					displayCountryData(countryData);
 
+					//Populate Exchange modal
+
+										
+					$.getJSON('https://openexchangerates.org/api/latest.json?app_id=ee7c590fa710406b9327bb70d67037dc&symbols=',
+					function(response){
+						
+						$("#txtBase").text(response.base);
+						$('txtExchangeRate').text();
+						
+						$('#timeStamp').text(date = new Date(response.timestamp * 1000));
+						hours = date.getHours();
+						minutes = "0" + date.getMinutes();
+						seconds = "0" + date.getSeconds();
+						formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+						
+					});
+					
 					
 					// Populate weather modal
 

@@ -22,32 +22,57 @@
   position: absolute;
   z-index: 2;
   top: 200px;
-  background-color: transparent;
+  left: 30px;
+  cursor: pointer;
   border: 0em;
+  background: url("../../../images/info.png");
+  background-repeat: no-repeat;
+  padding-left: 64px;
+  height: 64px;
+  vertical-align: middle;
+  
   }
 
 #countryExchangeButton {
   position: absolute;
   z-index: 2;
   top: 300px;
-  background-color: transparent;
+  left: 30px;
+  cursor: pointer;
   border: 0em;
+  background: url("../../../images/stats.png");
+  background-repeat: no-repeat;
+  padding-left: 64px;
+  height: 64px;
+  vertical-align: middle;
 }
 
 #countryWeatherButton {
   position: absolute;
   z-index: 2;
   top: 400px;
-  background-color: transparent;
+  left: 30px;
+  cursor: pointer;
   border: 0em;
+  background: url("../../../images/cloudy.png");
+  background-repeat: no-repeat;
+  padding-left: 64px;
+  height: 64px;
+  vertical-align: middle;
 }
 
 #countryWikiButton {
   position: absolute;
   z-index: 2;
   top: 500px;
-  background-color: transparent;
+  left: 30px;
+  cursor: pointer;
   border: 0em;
+  background: url("../../../images/wikipedia-puzzle.png");
+  background-repeat: no-repeat;
+  padding-left: 64px;
+  height: 64px;
+  vertical-align: middle;
 }
 
 /* Modal Styles */
