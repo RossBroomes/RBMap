@@ -31,6 +31,7 @@ $('#selCountry').change(function() {
 						$("#txtBase").text(response.base);
 						$('#txtExchangeRate').text(response.rates[countryData.currencyCode]);
 						
+
 						$('#timeStamp').text(date = new Date(response.timestamp * 1000));
 						hours = date.getHours();
 						minutes = "0" + date.getMinutes();
