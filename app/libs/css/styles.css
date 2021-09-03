@@ -25,7 +25,7 @@
   left: 30px;
   cursor: pointer;
   border: 0em;
-  background: url("../../../images/info.png");
+  background: url("../../images/info.png");
   background-repeat: no-repeat;
   padding-left: 64px;
   height: 64px;
@@ -40,7 +40,7 @@
   left: 30px;
   cursor: pointer;
   border: 0em;
-  background: url("../../../images/stats.png");
+  background: url("../../images/stats.png");
   background-repeat: no-repeat;
   padding-left: 64px;
   height: 64px;
@@ -54,7 +54,7 @@
   left: 30px;
   cursor: pointer;
   border: 0em;
-  background: url("../../../images/cloudy.png");
+  background: url("../../images/cloudy.png");
   background-repeat: no-repeat;
   padding-left: 64px;
   height: 64px;
@@ -68,7 +68,7 @@
   left: 30px;
   cursor: pointer;
   border: 0em;
-  background: url("../../../images/wikipedia-puzzle.png");
+  background: url("../../images/wikipedia-puzzle.png");
   background-repeat: no-repeat;
   padding-left: 64px;
   height: 64px;

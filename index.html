@@ -3,10 +3,13 @@
 <head>
 
   <meta charset="utf-8" />
-  <title>RBMaps</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"/>
+
+
+  <title>RBMaps</title>
+
+    <link rel="stylesheet" href="./app/vendors/css/bootstrap.min.css">
     
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -16,8 +19,8 @@
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
 
-    <script src="./app/libs/js/leaflet-providers.js"></script>
-    <script src="./app/libs/js/leaflet.ajax.js"></script>
+    <script src="./app/vendors/js/leaflet-providers.js"></script>
+    <script src="./app/vendors/js/leaflet.ajax.js"></script>
     
     <link rel="stylesheet" href="./app/libs/css/styles.css">
     
@@ -294,12 +297,12 @@
             <table>
 
               <tr>
-                <td align="right">Temperature:</td>
+                <td align="right">Temperature (<sup>o</sup>C):</td>
                 <td id="temp"></td>
               </tr>
 
               <tr>
-                <td align="right">Feels Like:</td>
+                <td align="right">Feels Like(<sup>o</sup>C):</td>
                 <td id="feelsLike"></td>
               </tr>
 
@@ -309,27 +312,27 @@
               </tr>
 
               <tr>
-                <td align="right">Temp minimum:</td>
+                <td align="right">Temp minimum(<sup>o</sup>C):</td>
                 <td id="tempMin"></td>
               </tr>
 
               <tr>
-                <td align="right">Temp Maximum:</td>
+                <td align="right">Temp Maximum(<sup>o</sup>C):</td>
                 <td id="tempMax"></td>
               </tr>
 
               <tr>
-                <td align="right">Wind Degrees:</td>
+                <td align="right">Wind Direction(<sup>o</sup>):</td>
                 <td id="deg"></td>
               </tr>
 
               <tr>
-                <td align="right">Speed:</td>
+                <td align="right">Speed km/h:</td>
                 <td id="speed"></td>
               </tr>
 
               <tr>
-                <td align="right">Gust:</td>
+                <td align="right">Gust km/h:</td>
                 <td id="gust"></td>
 
               <tr>
@@ -398,10 +401,11 @@
     </div>
   <div id="map" class="z-depth-1-half map-container"></div>
     
-      
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="./app/vendors/js/bootstrap.js"></script>
+  
 </body>
-    <script type="application/javascript" src="./app/libs/js/jquery-2.2.3.min.js"></script>
+    <script type="application/javascript" src="./app/vendors/js/jquery-2.2.3.min.js"></script>
     <script type="application/javascript" src="./app/libs/js/contentData.js"></script>
 	  <script type="application/javascript" src="./app/libs/js/script.js"></script>
     <script type="application/javascript" src="./app/libs/js/map.js"></script> 

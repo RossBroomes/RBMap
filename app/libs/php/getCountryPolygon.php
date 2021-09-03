@@ -4,7 +4,7 @@
 	error_reporting(E_ALL);
     $executionStartTime = microtime(true);
 	
-	$string = file_get_contents("../../../countryBorders.geo.json");
+	$string = file_get_contents("../../vendors/json/countryBorders.geo.json");
     $json_a = json_decode($string, true);
 
     $countries = $json_a['features'];
