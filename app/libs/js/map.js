@@ -9,27 +9,3 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 
 L.control.scale().addTo(map);
-
-
-//var geojsonLayer = new L.GeoJSON.AJAX("countryBorders.geo.json");
-// Make a call to the jason file but using the country code, whihch is in country boardersgeojson file, then add to map.
-
-//geojsonLayer.addTo(map);
-//geojsonLayer.bringToBack();
-
-//will need popup on polygon
-//marker.bindPopup("insert information pulled from php call on contry info") https://www.youtube.com/watch?v=OYjFR_CGV8o&ab_channel=MapTiler MARKER only
-//geojsonlayer.bindPopup
-
-// geo location
-// if('geolocation' in navigator) {
-//   console.log('geolocation available');
-//   navigator.geolocation.getCurrentPosition(position => {
-//       const lat = position.coords.latitude;
-//       const lon = position.coords.longitude;
-//       document.getElementById('latitude');
-//       document.getElementById('longitude');
-//      console.log(position);
-// });
-// } else {
-//   console.log('geolocation not available')

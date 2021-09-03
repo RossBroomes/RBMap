@@ -25,7 +25,7 @@ function displayExchangeRates(exchange) {
 
   $("#txtExchangeRate").html(rates);
 }
-// returns a promise-like object which needs to be await-ed to get the data
+// return object
 
 async function getExchangeRates(selectedCountry) {
   return $.ajax({
