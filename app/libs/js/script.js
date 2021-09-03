@@ -24,10 +24,10 @@ $('#selCountry').change(function() {
 					displayCountryData(countryData);
 
 					//Populate Exchange modal
-					console.log(countryData)			
+								
 					$.getJSON('https://openexchangerates.org/api/latest.json?app_id=ee7c590fa710406b9327bb70d67037dc&symbols=' + countryData.currencyCode,
 					function(response){
-						console.log(response)
+						
 						$("#txtBase").text(response.base);
 						$('#txtExchangeRate').text(response.rates[countryData.currencyCode]);
 						
@@ -99,32 +99,4 @@ $('#selCountry').change(function() {
 	});
 
 						
-						// // Create a new JavaScript Date object based on the timestamp
-						// // multiplied by 1000 so that the argument is in milliseconds, not seconds.
-						// var date = new Date("sunset" * 1000);
-						// // Hours part from the timestamp
-						// var hours = date.getHours();
-						// // Minutes part from the timestamp
-						// var minutes = "0" + date.getMinutes();
-						// // Seconds part from the timestamp
-						// var seconds = "0" + date.getSeconds();
-
-						// // Will display time in 10:30:23 format
-						// var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-
-						// console.log(formattedTime);
-
-
-
-
-
-						// function format_time(s) {
-  						// const dtFormat = new Intl.DateTimeFormat('en-GB', {
-    					// timeStyle: 'medium',
-    					// timeZone: 'UTC'
-  						// });
-  
-  						// return dtFormat.format(new Date(s * 1e3));
-						// }
-
-						// console.log( format_time(1630414128) );  // "03:25:45"
+					

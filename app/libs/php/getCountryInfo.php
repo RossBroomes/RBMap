@@ -5,9 +5,9 @@
 
 	$executionStartTime = microtime(true);
 
-	/**
-	 * Get the country info
-	 */
+	
+	// Get the country info
+	
 	$url='http://api.geonames.org/countryInfoJSON?formatted=true&lang=en&country=' . $_REQUEST['country'] . '&username=rbaw&style=full';
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -29,9 +29,8 @@
 	$output['data'] = $decode['geonames'][0];
 
 
-	/**
-	 * Get the capital info
-	 */
+	// Get the capital info
+	
 	$capital = $output['data']['capital'];
 	
 	$url = 'https://api.opencagedata.com/geocode/v1/json?q=' . urlencode($capital) . '&key=4d2bcc7bf5bc4d5297ca437a245994b7';
@@ -52,9 +51,7 @@
 	];
 
 
-	/**
-	 * Send back to js
-	 */
+	// Send back to js
 	header('Content-Type: application/json; charset=UTF-8');
 
 	echo json_encode($output); 
