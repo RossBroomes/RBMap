@@ -24,13 +24,12 @@ $('#selCountry').change(function() {
 					displayCountryData(countryData);
 
 					//Populate Exchange modal
-
-										
-					$.getJSON('https://openexchangerates.org/api/latest.json?app_id=ee7c590fa710406b9327bb70d67037dc&symbols=',
+					console.log(countryData)			
+					$.getJSON('https://openexchangerates.org/api/latest.json?app_id=ee7c590fa710406b9327bb70d67037dc&symbols=' + countryData.currencyCode,
 					function(response){
-						
+						console.log(response)
 						$("#txtBase").text(response.base);
-						$('txtExchangeRate').text();
+						$('#txtExchangeRate').text(response.rates[countryData.currencyCode]);
 						
 						$('#timeStamp').text(date = new Date(response.timestamp * 1000));
 						hours = date.getHours();
