@@ -12,7 +12,7 @@ function displayCountryData(countryData) {
 
   $("#txtCountryName").html(countryName);
   $("#txtContinentName").html(continentName);
-  $("#txtCurrencyCode").html(currencyCode);
+  $(".txtCurrencyCode").html(currencyCode);
   $("#txtContinent").html(continent);
   $("#txtCapital").html(capital);
   $("#txtLanguages").html(languages);
