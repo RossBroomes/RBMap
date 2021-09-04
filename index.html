@@ -8,20 +8,33 @@
 
 
   <title>RBMaps</title>
-
-    <link rel="stylesheet" href="./app/vendors/css/bootstrap.min.css">
+  <!--Botstap Styles -->
+    <link rel="stylesheet" href="./app/vendors/css/bootstrap/bootstrap.min.css">
     
+  <!--Leaflet.js Styles -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
    crossorigin=""/>
+  <!--Leaflet Ops -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+  <!--Marker Styles --> -->
+  <link rel="stylesheet" href="./app/vendors/css/Leaflet.markercluster/MarkerCluster.css" />
+  <link rel="stylesheet" href="./app/vendors/css/Leaflet.markercluster/MarkerCluster.Default.css" />
+  <!-- Opencage Styles -->
+  <link rel="stylesheet" href="./app/vendors/css/Geocoding/L.Control.OpenCageSearch.dev.css" />
 
-   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-   crossorigin=""></script>
-
-    <script src="./app/vendors/js/leaflet-providers.js"></script>
-    <script src="./app/vendors/js/leaflet.ajax.js"></script>
     
+    <!--Leaflet Map Providers -->
+    <script src="./app/vendors/js/leaflet-providers.js"></script>
+    <!--ajax calls for map -->
+    <script src="./app/vendors/js/leaflet.ajax.js"></script>
+    <!--Marker js -->
+    <script src="./app/vendors/js/Leaflet.markercluster/leaflet.markercluster.js"></script>
+    <!-- Opencage js -->
+    <script src="./app/vendors/js/Geocoding/L.Control.OpenCageSearch.dev.js"></script>
+    <!--My CSS Styles -->
     <link rel="stylesheet" href="./app/libs/css/styles.css">
     
 
@@ -402,7 +415,7 @@
   <div id="map" class="z-depth-1-half map-container"></div>
     
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="./app/vendors/js/bootstrap.js"></script>
+  <script src="./app/vendors/js/Bootstrap/bootstrap.js"></script>
   
 </body>
     <script type="application/javascript" src="./app/vendors/js/jquery-2.2.3.min.js"></script>
