@@ -37,7 +37,7 @@
 
     $executionStartTime = microtime(true);
 
-    $countryData = json_decode(file_get_contents("../../../countryBorders.geo.json"), true);
+    $countryData = json_decode(file_get_contents("./app/vendors/json/countryBorders.geo.json"), true);
 
     $country = [];
 
