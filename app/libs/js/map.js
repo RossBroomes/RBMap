@@ -1,6 +1,6 @@
 
 let map = L.map("map").fitWorld();
-map.locate({ setView: true, maxZoom: 22});
+map.locate({ setView: true, maxZoom: 10});
 
 L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=b352388057e24935bb02090ec580105e', {
 	maxZoom: 17,
@@ -32,6 +32,8 @@ var addressPoints = [
   [-37.8080905833, 175.2275400667, "129"]
 ]
 
+// https://documenter.getpostman.com/view/10808728/SzS8rjbc#81415d42-eb53-4a85-8484-42d2349debfe    civid cases with lat and long.
+
 
 var markers = L.markerClusterGroup();
 
@@ -49,40 +51,74 @@ map.addLayer(markers);
 
 	
 // Map country Search Open Cage
-    var options = {
-    key: '4d2bcc7bf5bc4d5297ca437a245994b7',
-    limit: 5,
+var options = {
+	key: '4d2bcc7bf5bc4d5297ca437a245994b7',
+  limit: 5,
 	position: 'topright',
-    placeholder: 'Search...', // the text in the empty search box
-    errorMessage: 'Nothing found.',
-    showResultIcons: false,
-    collapsed: true,
-    expand: 'click',
+  placeholder: 'Search...', // the text in the empty search box
+  errorMessage: 'Nothing found.',
+  showResultIcons: false,
+  collapsed: true,
+  expand: 'click',
 	addResultToMap: true, // if a map marker should be added after the user clicks a result
-    onResultClick: undefined, // callback with result as first parameter
+  onResultClick: undefined, // callback with result as first parameter
 	resultExtension: {
         geohash: "annotations.geohash",
         what3words: "annotations.what3words",
         addressComponents: "components"
     } //if additional attributes from OpenCage search API should be added to the result
 	};    
-	var control = L.Control.openCageSearch(options).addTo(map);
+var control = L.Control.openCageSearch(options).addTo(map);
 
-    // };
-    // var geocoder = L.Control.OpenCageSearch.geocoder(options);
-    // var control = L.Control.openCageSearch(options).addTo(map);
-    // var marker;
+//Weather Layers           
 
-    // map.on('click', function(e) {
-    //   var query = e.latlng.lat.toString() + ',' + e.latlng.lng.toString();
-    //   geocoder.geocode(query, function(results) {
-    //     var r = results[0];
-    //     if (r) {
-    //       if (marker) {
-    //         marker.setLatLng(r.center).setPopupContent(r.name).openPopup();
-    //       } else {
-    //         marker = L.marker(r.center).bindPopup(r.name).addTo(map).openPopup();
-    //       }
-    //     }
-    //   })
-    // })
+// var layers = [];
+//     for (var providerId in providers) {
+//     layers.push(providers[providerId]);
+//             }
+
+//     layers.push({
+//         layer: {
+//         onAdd: function() {},
+//         onRemove: function() {}
+//          },
+//     title: 'empty'
+//       })
+
+// var ctrl = L.control.iconLayers(layers).addTo(map);
+
+
+
+// Weather Layers
+
+// var attribution = '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+
+//     mapnikLayer = L.tileLayer(
+//         'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+//         {attribution: attribution}
+//     )
+//     var blackAndWhite = L.tileLayer(
+//         'http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png',
+//         {attribution: attribution}
+//     )
+//     var clouds = L.tileLayer('http://{s}.tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png', {
+//         attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
+//         opacity: 0.5
+//     })
+
+//     map = L.map('map', {
+//         center: new L.LatLng(39.73, -104.99),
+//         zoom: 10,
+//         layers: [mapnikLayer, clouds]
+//     })
+
+//     var baseLayers = {
+//         'Mapnik': mapnikLayer,
+//         'Black and Whilte': blackAndWhite
+//     }
+//     var overlayLayers = {
+//         'Clouds': clouds
+//     }
+
+//     var control = L.control.selectLayers(baseLayers, overlayLayers)
+//     control.addTo(map)

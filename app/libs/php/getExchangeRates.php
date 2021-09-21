@@ -16,6 +16,8 @@
 
 	curl_close($ch);
 
+    echo $result; exit;
+
 	$decode = json_decode($result,true);	
 
 	$output['status']['code'] = "200";
@@ -28,12 +30,6 @@
 
 	echo json_encode($output); 
 
-?>
-
-
-
-
-<?php
 
     $executionStartTime = microtime(true);
 

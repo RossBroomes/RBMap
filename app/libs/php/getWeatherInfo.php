@@ -5,24 +5,27 @@
 
 	$executionStartTime = microtime(true);
 
-    $url = 'http://api.geonames.org/weatherIcaoJSON?ICAO=' . $_REQUEST['airport'] . '&username=rbaw';
+    $url = 'https://api.openweathermap.org/data/2.5/weather?lat=' . $_REQUEST['lat'] . '&lon=' . $_REQUEST['lon'] . '&units=metric&appid=0a97b286ef39e6c7365556f44496b631';
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_URL,$url);
 
 	$result=curl_exec($ch);
+	//var_dump($result);
 
 	curl_close($ch);
     
 	$weather = json_decode($result, true);
+
+	//echo '<pre>'; print_r($weather);
 
     $output = array();
 	$output['status']['code'] = "200";
 	$output['status']['name'] = "ok";
 	$output['status']['description'] = "success";
 	$output['status']['returnedIn'] = intval((microtime(true) - $executionStartTime) * 1000) . " ms";
-    $output['weather'] = $weather['weatherObservation'];
+    $output['weather'] = $weather['main'];
 
     header('Content-Type: application/json; charset=UTF-8');
 

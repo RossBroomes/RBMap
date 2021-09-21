@@ -475,11 +475,11 @@
 			}
 		},
 		OpenWeatherMap: {
-			url: 'http://{s}.tile.openweathermap.org/map/{variant}/{z}/{x}/{y}.png?appid={apiKey}',
+			url: 'http://{s}.tile.openweathermap.org/map/{variant}/{z}/{x}/{y}.png',
 			options: {
 				maxZoom: 19,
 				attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
-				apiKey: '<insert your api key here>',
+				apiKey: '0a97b286ef39e6c7365556f44496b631',
 				opacity: 0.5
 			},
 			variants: {
