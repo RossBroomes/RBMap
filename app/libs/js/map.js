@@ -32,7 +32,6 @@ var addressPoints = [
   [-37.8080905833, 175.2275400667, "129"]
 ]
 
-// https://documenter.getpostman.com/view/10808728/SzS8rjbc#81415d42-eb53-4a85-8484-42d2349debfe    civid cases with lat and long.
 
 
 var markers = L.markerClusterGroup();
@@ -105,65 +104,54 @@ $.getJSON('app/libs/php/getEarthquakes.php',
 
 		map.addLayer(markers);
 
-		// $('#').text(response.Lat);
-		// $('#').text(response.Lon);
-		// $('#').text(response.confirmed);
-		// $('#').text(response.Deaths);
-		// $('#').text(response.Date = new Date(response.sys.sunset * 1000));
 });
 
 
+//Map Layers           
 
+var layers = [];
+    for (var providerId in providers) {
+    layers.push(providers[providerId]);
+            }
 
-//Weather Layers           
+    layers.push({
+        layer: {
+        onAdd: function() {},
+        onRemove: function() {}
+         },
+    title: 'empty'
+      })
 
-// var layers = [];
-//     for (var providerId in providers) {
-//     layers.push(providers[providerId]);
-//             }
+var ctrl = L.control.iconLayers(layers).addTo(map);
 
-//     layers.push({
-//         layer: {
-//         onAdd: function() {},
-//         onRemove: function() {}
-//          },
-//     title: 'empty'
-//       })
+var attribution = '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
 
-// var ctrl = L.control.iconLayers(layers).addTo(map);
+    mapnikLayer = L.tileLayer(
+        'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {attribution: attribution}
+    )
+    var blackAndWhite = L.tileLayer(
+        'http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png',
+        {attribution: attribution}
+    )
+    var clouds = L.tileLayer('http://{s}.tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
+        opacity: 0.5
+    })
 
+    map = L.map('map', {
+        center: new L.LatLng(39.73, -104.99),
+        zoom: 10,
+        layers: [mapnikLayer, clouds]
+    })
 
+    var baseLayers = {
+        'Mapnik': mapnikLayer,
+        'Black and Whilte': blackAndWhite
+    }
+    var overlayLayers = {
+        'Clouds': clouds
+    }
 
-// Weather Layers
-
-// var attribution = '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
-
-//     mapnikLayer = L.tileLayer(
-//         'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-//         {attribution: attribution}
-//     )
-//     var blackAndWhite = L.tileLayer(
-//         'http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png',
-//         {attribution: attribution}
-//     )
-//     var clouds = L.tileLayer('http://{s}.tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png', {
-//         attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
-//         opacity: 0.5
-//     })
-
-//     map = L.map('map', {
-//         center: new L.LatLng(39.73, -104.99),
-//         zoom: 10,
-//         layers: [mapnikLayer, clouds]
-//     })
-
-//     var baseLayers = {
-//         'Mapnik': mapnikLayer,
-//         'Black and Whilte': blackAndWhite
-//     }
-//     var overlayLayers = {
-//         'Clouds': clouds
-//     }
-
-//     var control = L.control.selectLayers(baseLayers, overlayLayers)
-//     control.addTo(map)
+    var control = L.control.selectLayers(baseLayers, overlayLayers)
+    control.addTo(map)
