@@ -1,3 +1,12 @@
+// Populate countries dropdown
+
+$.getJSON('app/libs/php/getCountries.php', function(json){
+	$('#selCountry').html('<option>---Select country---</option>');
+	$.each(json, function(key, value){
+		$('#selCountry').append('<option value="' + key + '">' + value + '</option>');
+	});
+});
+
 
 $('#selCountry').change(function() {
 		$.ajax({
@@ -10,6 +19,8 @@ $('#selCountry').change(function() {
 
 				
 				if (result.status.name == "ok") {
+
+					console.log(result);
 					
 					L.marker(result['data']['capital']['geometry']).addTo(map);
                     map.panTo(result['data']['capital']['geometry']);
@@ -25,7 +36,8 @@ $('#selCountry').change(function() {
 
 					//Populate Exchange modal
 								
-					$.getJSON('https://openexchangerates.org/api/latest.json?app_id=ee7c590fa710406b9327bb70d67037dc&symbols=' + countryData.currencyCode,
+					
+					$.getJSON('../php/getExchangeRates.php?countryCode=' + countryData.currencyCode,
 					function(response){
 						
 						$("#txtBase").text(response.base);
@@ -40,18 +52,39 @@ $('#selCountry').change(function() {
 						
 					});
 					
-					
+					// $.ajax({
+					// 	url: '../php/getExchangeRates.php',
+					// 	type: 'GET',
+					// 	dataType: 'json',
+					// 	data: {
+					// 		countryCode: countryData.currencyCode,
+					// 	},success: function(response) {
+					// 		$("#txtBase").text(response.base);
+					// 		$('#txtExchangeRate').text(response.rates[countryData.currencyCode]);
+							
+
+					// 		$('#timeStamp').text(date = new Date(response.timestamp * 1000));
+					// 		hours = date.getHours();
+					// 		minutes = "0" + date.getMinutes();
+					// 		seconds = "0" + date.getSeconds();
+					// 		formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+					// 	}
+					// });
+
 					// Populate weather modal
 
-					$.getJSON('https://api.openweathermap.org/data/2.5/weather?lat=' + capital['geometry']['lat'] + '&lon=' + capital['geometry']['lng'] + '&units=metric' + '&appid=0a97b286ef39e6c7365556f44496b631', 
+					$.getJSON('/ITCS/project1/app/libs/php/getWeatherInfo.php?lat=' + capital['geometry']['lat'] + '&lon=' + capital['geometry']['lng'], 
 					function(response){
 
+						console.log(response.weather.feels_like);
+						console.log($('#feelsLike').length);
+
 						$('#weatherDescription').text(response.weather[0].description);
-						$('#temp').text(response.main.temp);
-						$('#feelsLike').text(response.main.feels_like);
-						$('#pressure').text(response.main.pressure);
-						$('#tempMax').text(response.main.temp_max);
-						$('#tempMin').text(response.main.temp_min);
+						$('#temp').text(response.weather.temp);
+						$('#feelsLike').text(response.weather.feels_like);
+						$('#pressure').text(response.weather.pressure);
+						$('#tempMax').text(response.weather.temp_max);
+						$('#tempMin').text(response.weather.temp_min);
 
 						$('#deg').text(response.wind.deg);
 						$('#gust').text(response.wind.gust);
@@ -80,7 +113,8 @@ $('#selCountry').change(function() {
 					
 					// populate Wiki
 
-					$.getJSON('http://api.geonames.org/wikipediaSearchJSON?formatted=true&q=' + capital['name'] + '&maxRows=10&username=rbaw', function(response){
+					$.getJSON('http://api.geonames.org/wikipediaSearchJSON?formatted=true&q=' + capital['name'] + '&maxRows=10&username=rbaw', 
+					function(response){
 						$('#title').text(response.geonames[0].title);
 						$('#summary').text(response.geonames[0].summary);
 						$('#url').text(response.geonames[0].wikipediaUrl);
@@ -98,5 +132,18 @@ $('#selCountry').change(function() {
 	
 	});
 
-						
-					
+
+// populate Marks
+
+// $.getJSON('https://api.covid19api.com/all', 
+// 	function(response){
+// 		$('#').text(response.Lat);
+// 		$('#').text(response.Lon);
+// 		$('#').text(response.confirmed);
+// 		$('#').text(response.Deaths);
+// 		$('#').text(response.Date = new Date(response.sys.sunset * 1000));
+// 			hours = date.getHours();
+// 			minutes = "0" + date.getMinutes();
+// 			seconds = "0" + date.getSeconds();
+// 			formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+// });					
