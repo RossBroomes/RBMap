@@ -70,6 +70,51 @@ var options = {
 	};    
 var control = L.Control.openCageSearch(options).addTo(map);
 
+
+
+$.getJSON('app/libs/php/getEarthquakes.php', 
+	function(response){
+
+		for (var i = 0; i < response.features.length; i++) {
+			var a = response.features[i];
+			var title = a.properties.place;
+
+      var time = new Date(a.properties.time);
+
+      var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      var year = time.getFullYear();
+      var month = months[time.getMonth()];
+      var date = time.getDate();
+
+      // Hours part from the timestamp
+      var hours = time.getHours();
+      // Minutes part from the timestamp
+      var minutes = "0" + time.getMinutes();
+      // Seconds part from the timestamp
+      var seconds = "0" + time.getSeconds();
+
+      var title = title + ' | Time: ' + date + '/' + month + '/' + year;
+
+
+      var marker = L.marker(new L.LatLng(a.geometry.coordinates[1], a.geometry.coordinates[0]), {
+				title: title
+			});
+			marker.bindPopup(title);
+			markers.addLayer(marker);
+		}
+
+		map.addLayer(markers);
+
+		// $('#').text(response.Lat);
+		// $('#').text(response.Lon);
+		// $('#').text(response.confirmed);
+		// $('#').text(response.Deaths);
+		// $('#').text(response.Date = new Date(response.sys.sunset * 1000));
+});
+
+
+
+
 //Weather Layers           
 
 // var layers = [];

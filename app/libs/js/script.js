@@ -5,6 +5,20 @@ $.getJSON('app/libs/php/getCountries.php', function(json){
 	$.each(json, function(key, value){
 		$('#selCountry').append('<option value="' + key + '">' + value + '</option>');
 	});
+
+	var options = $('#selCountry option');
+	var arr = options.map(function(_, o) {
+		return { t: $(o).text(), v: o.value };
+	}).get();
+
+	arr.sort(function(o1, o2) {
+		return o1.t > o2.t ? 1 : o1.t < o2.t ? -1 : 0;
+	});
+	options.each(function(i, o) {
+		o.value = arr[i].v;
+		$(o).text(arr[i].t);
+	});
+
 });
 
 
@@ -20,7 +34,7 @@ $('#selCountry').change(function() {
 				
 				if (result.status.name == "ok") {
 
-					console.log(result);
+					$('.btn-modal').show();
 					
 					L.marker(result['data']['capital']['geometry']).addTo(map);
                     map.panTo(result['data']['capital']['geometry']);
@@ -37,7 +51,7 @@ $('#selCountry').change(function() {
 					//Populate Exchange modal
 								
 					
-					$.getJSON('../php/getExchangeRates.php?countryCode=' + countryData.currencyCode,
+					$.getJSON('app/libs/php/getExchangeRates.php?currencyCode=' + countryData.currencyCode,
 					function(response){
 						
 						$("#txtBase").text(response.base);
@@ -73,18 +87,15 @@ $('#selCountry').change(function() {
 
 					// Populate weather modal
 
-					$.getJSON('/ITCS/project1/app/libs/php/getWeatherInfo.php?lat=' + capital['geometry']['lat'] + '&lon=' + capital['geometry']['lng'], 
+					$.getJSON('app/libs/php/getWeatherInfo.php?lat=' + capital['geometry']['lat'] + '&lon=' + capital['geometry']['lng'], 
 					function(response){
 
-						console.log(response.weather.feels_like);
-						console.log($('#feelsLike').length);
-
 						$('#weatherDescription').text(response.weather[0].description);
-						$('#temp').text(response.weather.temp);
-						$('#feelsLike').text(response.weather.feels_like);
-						$('#pressure').text(response.weather.pressure);
-						$('#tempMax').text(response.weather.temp_max);
-						$('#tempMin').text(response.weather.temp_min);
+						$('#temp').text(response.main.temp);
+						$('#feelsLike').text(response.main.feels_like);
+						$('#pressure').text(response.main.pressure);
+						$('#tempMax').text(response.main.temp_max);
+						$('#tempMin').text(response.main.temp_min);
 
 						$('#deg').text(response.wind.deg);
 						$('#gust').text(response.wind.gust);
@@ -113,12 +124,12 @@ $('#selCountry').change(function() {
 					
 					// populate Wiki
 
-					$.getJSON('http://api.geonames.org/wikipediaSearchJSON?formatted=true&q=' + capital['name'] + '&maxRows=10&username=rbaw', 
+					$.getJSON('app/libs/php/getWikiInfo.php?q=' + capital['name'],
 					function(response){
-						$('#title').text(response.geonames[0].title);
-						$('#summary').text(response.geonames[0].summary);
-						$('#url').text(response.geonames[0].wikipediaUrl);
-						$('#thumbNail').attr('src', response.geonames[0].thumbnailImg);
+						$('#title').text(response.wikipediaSearch.geonames[0].title);
+						$('#summary').text(response.wikipediaSearch.geonames[0].summary);
+						$('#url').text(response.wikipediaSearch.geonames[0].wikipediaUrl);
+						$('#thumbNail').attr('src', response.wikipediaSearch.geonames[0].thumbnailImg);
 					});
 				
 				}
@@ -146,4 +157,33 @@ $('#selCountry').change(function() {
 // 			minutes = "0" + date.getMinutes();
 // 			seconds = "0" + date.getSeconds();
 // 			formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-// });					
+// });
+
+
+// $.getJSON('app/libs/php/getEarthquakes.php', 
+// 	function(response){
+// 		console.log(response);
+
+// 		//let map = L.map("map");
+// 		let map = window.maps.leafletList[0].map;
+		
+// 		var markers = L.markerClusterGroup();
+
+// 		for (var i = 0; i < response.features.length; i++) {
+// 			var a = response.features[i];
+// 			var title = a.properties.place;
+// 			var marker = L.marker(new L.LatLng(a.geometery.coordinates[0], a.geometery.coordinates[1]), {
+// 				title: title
+// 			});
+// 			marker.bindPopup(title);
+// 			markers.addLayer(marker);
+// 		}
+
+// 		map.addLayer(markers);
+
+// 		// $('#').text(response.Lat);
+// 		// $('#').text(response.Lon);
+// 		// $('#').text(response.confirmed);
+// 		// $('#').text(response.Deaths);
+// 		// $('#').text(response.Date = new Date(response.sys.sunset * 1000));
+// });

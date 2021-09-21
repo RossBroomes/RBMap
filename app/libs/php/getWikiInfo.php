@@ -6,14 +6,14 @@
 	$executionStartTime = microtime(true);
 	//urlencode helps with unwanted characters in the parameter search &&%%
 
-	$url = 'http://api.geonames.org/wikipediaSearchJSON?formatted=true&q=' . urlencode($REQUEST_capital['name']) . '&maxRows=10&username=rbaw';
+	$url = 'http://api.geonames.org/wikipediaSearchJSON?formatted=true&q=' . urlencode($_REQUEST['q']) . '&maxRows=10&username=rbaw';
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_URL,$url);
 
 	$result=curl_exec($ch);
-	var_dump(result)
+	
 	curl_close($ch);
 	$wikipediaSearch = json_decode($result, true);
 

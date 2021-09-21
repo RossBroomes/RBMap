@@ -92,3 +92,7 @@
 .modal-dialog {
   max-width: 600px;
 }
+
+.btn-modal {
+  display:none;
+}
