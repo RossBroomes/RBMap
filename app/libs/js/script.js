@@ -1,3 +1,100 @@
+$.ajax({
+    url: "app/libs/php/getDropdownCountry.php",
+    type: 'POST',
+    dataType: "json",       
+    success: function(result) {
+        console.log(result);
+
+        if (result.status.name == "ok") {
+
+            $('#selectCountry').append(`<option value="${result.data.border.features.properties.iso_a2}">${result.data.border.features.properties.name}</option>`);
+
+
+        }        
+
+        
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+        console.log(jqXHR);
+    }
+    
+});
+
+function displayCountryData(countryData) {
+  const {
+    continent,
+    capital,
+    languages,
+    population,
+    areaInSqKm,
+    countryName,
+    continentName,
+    currencyCode,
+  } = countryData;
+
+  $("#txtCountryName").html(countryName);
+  $("#txtContinentName").html(continentName);
+  $(".txtCurrencyCode").html(currencyCode);
+  $("#txtContinent").html(continent);
+  $("#txtCapital").html(capital);
+  $("#txtLanguages").html(languages);
+  $("#txtPopulation").html(population);
+  $("#txtArea").html(areaInSqKm);
+}
+
+function displayExchangeRates(exchange) {
+  const { rates } = exchange;
+
+  $("#txtExchangeRate").html(rates);
+}
+// return object
+
+async function getExchangeRates(selectedCountry) {
+  return $.ajax({
+    url: "app/libs/php/getExchangeRates.php",
+    type: "POST",
+    dataType: "json",
+    data: {
+      country: selectedCountry,
+    },
+  });
+}
+
+async function getCountryData(selectedCountry) {
+  return $.ajax({
+    url: "app/libs/php/getCountryInfo.php",
+    type: "POST",
+    dataType: "json",
+    data: {
+      country: selectedCountry,
+    },
+  });
+}
+
+async function getCountryPolygonFromBackend(iso3) {
+  return $.ajax({
+    url: "app/libs/php/getCountryPolygon.php",
+    type: "POST",
+    dataType: "json",
+    data: {
+      iso3: iso3,
+    },
+  });
+}
+
+let plottedGeoJson;
+async function getCountryDataAndDisplay(isoAlpha3) {
+  if (plottedGeoJson) {
+    plottedGeoJson.removeFrom(map);
+  }
+
+  const { data: countryPolygon } = await getCountryPolygonFromBackend(
+    isoAlpha3
+  );
+
+  plottedGeoJson = L.geoJSON(countryPolygon).addTo(map);
+}
+
 // Populate countries dropdown
 
 $.getJSON('app/libs/php/getCountries.php', function(json){
@@ -66,24 +163,7 @@ $('#selCountry').change(function() {
 						
 					});
 					
-					// $.ajax({
-					// 	url: '../php/getExchangeRates.php',
-					// 	type: 'GET',
-					// 	dataType: 'json',
-					// 	data: {
-					// 		countryCode: countryData.currencyCode,
-					// 	},success: function(response) {
-					// 		$("#txtBase").text(response.base);
-					// 		$('#txtExchangeRate').text(response.rates[countryData.currencyCode]);
-							
-
-					// 		$('#timeStamp').text(date = new Date(response.timestamp * 1000));
-					// 		hours = date.getHours();
-					// 		minutes = "0" + date.getMinutes();
-					// 		seconds = "0" + date.getSeconds();
-					// 		formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-					// 	}
-					// });
+				
 
 					// Populate weather modal
 
@@ -144,46 +224,3 @@ $('#selCountry').change(function() {
 	});
 
 
-// populate Marks
-
-// $.getJSON('https://api.covid19api.com/all', 
-// 	function(response){
-// 		$('#').text(response.Lat);
-// 		$('#').text(response.Lon);
-// 		$('#').text(response.confirmed);
-// 		$('#').text(response.Deaths);
-// 		$('#').text(response.Date = new Date(response.sys.sunset * 1000));
-// 			hours = date.getHours();
-// 			minutes = "0" + date.getMinutes();
-// 			seconds = "0" + date.getSeconds();
-// 			formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-// });
-
-
-// $.getJSON('app/libs/php/getEarthquakes.php', 
-// 	function(response){
-// 		console.log(response);
-
-// 		//let map = L.map("map");
-// 		let map = window.maps.leafletList[0].map;
-		
-// 		var markers = L.markerClusterGroup();
-
-// 		for (var i = 0; i < response.features.length; i++) {
-// 			var a = response.features[i];
-// 			var title = a.properties.place;
-// 			var marker = L.marker(new L.LatLng(a.geometery.coordinates[0], a.geometery.coordinates[1]), {
-// 				title: title
-// 			});
-// 			marker.bindPopup(title);
-// 			markers.addLayer(marker);
-// 		}
-
-// 		map.addLayer(markers);
-
-// 		// $('#').text(response.Lat);
-// 		// $('#').text(response.Lon);
-// 		// $('#').text(response.confirmed);
-// 		// $('#').text(response.Deaths);
-// 		// $('#').text(response.Date = new Date(response.sys.sunset * 1000));
-// });
