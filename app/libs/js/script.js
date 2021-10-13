@@ -1,25 +1,3 @@
-$.ajax({
-    url: "app/libs/php/getDropdownCountry.php",
-    type: 'POST',
-    dataType: "json",       
-    success: function(result) {
-        console.log(result);
-
-        if (result.status.name == "ok") {
-
-            $('#selectCountry').append(`<option value="${result.data.border.features.properties.iso_a2}">${result.data.border.features.properties.name}</option>`);
-
-
-        }        
-
-        
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-        console.log(jqXHR);
-    }
-    
-});
-
 function displayCountryData(countryData) {
   const {
     continent,
@@ -208,7 +186,7 @@ $('#selCountry').change(function() {
 					function(response){
 						$('#title').text(response.wikipediaSearch.geonames[0].title);
 						$('#summary').text(response.wikipediaSearch.geonames[0].summary);
-						$('#url').text(response.wikipediaSearch.geonames[0].wikipediaUrl);
+						$('#url').attr(response.wikipediaSearch.geonames[0].wikipediaUrl);
 						$('#thumbNail').attr('src', response.wikipediaSearch.geonames[0].thumbnailImg);
 					});
 				
