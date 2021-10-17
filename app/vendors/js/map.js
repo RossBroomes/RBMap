@@ -2,12 +2,52 @@
 let map = L.map("map").fitWorld();
 map.locate({ setView: true, maxZoom: 10});
 
+
 L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=b352388057e24935bb02090ec580105e', {
 	maxZoom: 17,
 	attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 	
 }).addTo(map);
 
+// easy Buttons
+var helloPopup = L.popup().setContent('Hello World!');
+
+L.easyButton('fa-globe', function(btn, map){
+    helloPopup.setLatLng(map.getCenter()).openOn(map);
+}).addTo(map);
+
+L.easyButton( '<img src="./app/images/info.png">', function(){
+  alert('you just clicked the html entity \&starf;');
+}).addTo(map);
+
+L.easyButton( '<img src="./app/images/stats.png">', function(){
+  alert('you just clicked the html entity \&starf;');
+}).addTo(map);
+
+L.easyButton( '<img src="./app/images/cloudy.png">', function(){
+  alert('you just clicked the html entity \&starf;');
+}).addTo(map);
+
+L.easyButton( '<img src="./app/images/wikipedia-puzzle.png">', function(){
+  alert('you just clicked the html entity \&starf;');
+}).addTo(map);
+
+
+
+
+L.easyButton( 'fa-gbp', function(){
+  map.setView([55, -2], 4);
+}).addTo(map);
+
+L.easyButton( 'fa-jpy', function(){
+  map.setView([38, 139], 4);
+}).addTo(map);
+
+L.easyButton( 'fa-usd', function(){
+  map.setView([37.8, -96], 3);
+}).addTo(map);
+
+// cluster marks
 
 L.control.scale().addTo(map);
 
@@ -155,3 +195,6 @@ var attribution = '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> c
 
     var control = L.control.selectLayers(baseLayers, overlayLayers)
     control.addTo(map)
+
+
+   
