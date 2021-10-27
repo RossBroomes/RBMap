@@ -1,3 +1,19 @@
+if ('geolocation' in navigator) {
+  console.log('geolocation available');
+  navigator.geolocation.getCurrentPosition(position => {
+
+    lat = position.coords.latitude;
+    long = position.coords.longitude;
+    // reverseGeocoding(lat, long);
+    // mymap.setView([lat, long], 5);
+    
+  });
+
+} else {
+
+  console.log('geolocation not available');
+}
+
 function displayCountryData(countryData) {
   const {
     continent,
@@ -130,15 +146,15 @@ $('#selCountry').change(function() {
 					function(response){
 						
 						$("#txtBase").text(response.base);
-						$('#txtExchangeRate').text(response.rates[countryData.currencyCode]);
 						
-
+						$('#txtExchangeRate').html(response.rates[countryData.currencyCode]+ ' / 1USD');
+						
 						$('#timeStamp').text(date = new Date(response.timestamp * 1000));
 						hours = date.getHours();
 						minutes = "0" + date.getMinutes();
 						seconds = "0" + date.getSeconds();
 						formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
-						
+						console.log(countryData)
 					});
 					
 				
@@ -200,5 +216,3 @@ $('#selCountry').change(function() {
 		}); 
 	
 	});
-
-

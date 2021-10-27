@@ -10,14 +10,8 @@ L.tileLayer('https://{s}.tile.thunderforest.com/outdoors/{z}/{x}/{y}.png?apikey=
 }).addTo(map);
 
 // easy Buttons
-var helloPopup = L.popup().setContent('Hello World!');
-
-L.easyButton('fa-globe', function(btn, map){
-    helloPopup.setLatLng(map.getCenter()).openOn(map);
-}).addTo(map);
 
 L.easyButton( '<img src="./app/images/info.png">', function(){
-  alert('you just clicked the html entity \&starf;');
 }).addTo(map);
 
 L.easyButton( '<img src="./app/images/stats.png">', function(){
@@ -32,20 +26,6 @@ L.easyButton( '<img src="./app/images/wikipedia-puzzle.png">', function(){
   alert('you just clicked the html entity \&starf;');
 }).addTo(map);
 
-
-
-
-L.easyButton( 'fa-gbp', function(){
-  map.setView([55, -2], 4);
-}).addTo(map);
-
-L.easyButton( 'fa-jpy', function(){
-  map.setView([38, 139], 4);
-}).addTo(map);
-
-L.easyButton( 'fa-usd', function(){
-  map.setView([37.8, -96], 3);
-}).addTo(map);
 
 // cluster marks
 
@@ -177,12 +157,6 @@ var attribution = '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> c
     var clouds = L.tileLayer('http://{s}.tile.openweathermap.org/map/clouds/{z}/{x}/{y}.png', {
         attribution: 'Map data &copy; <a href="http://openweathermap.org">OpenWeatherMap</a>',
         opacity: 0.5
-    })
-
-    map = L.map('map', {
-        center: new L.LatLng(39.73, -104.99),
-        zoom: 10,
-        layers: [mapnikLayer, clouds]
     })
 
     var baseLayers = {
